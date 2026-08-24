@@ -1,7 +1,7 @@
 import cesar
 
 def test_basic_shift():
-    # Shifting "abc" by 3 should result in "def"
+    #"abc" -> "def"
     encrypted = cesar.cifrar(3, "abc")
     assert encrypted == "def", f"Expected 'def', but got '{encrypted}'"
     
@@ -10,7 +10,7 @@ def test_basic_shift():
     print("Test 1 Passed: Basic Shift")
 
 def test_alphabet_wrap_around():
-    # Shifting "xyz" by 5 should wrap around to "cde"
+    #"xyz" -> "cde"
     encrypted = cesar.cifrar(5, "xyz")
     assert encrypted == "cde", f"Expected 'cde', but got {encrypted}"
     
@@ -19,7 +19,7 @@ def test_alphabet_wrap_around():
     print("Test 2 Passed: Alphabet Wrap-Around")
 
 def test_case_preservation():
-    # "Hello World" shifted by 3
+    #"Hello World" -> "Khoor Zruog"
     encrypted = cesar.cifrar(3, "Hello World")
     assert encrypted == "Khoor Zruog", f"Expected 'Khoor Zruog', but got '{encrypted}'"
     
@@ -28,11 +28,10 @@ def test_case_preservation():
     print("Test 3 Passed: Case Preservation")
 
 def test_punctuation_and_numbers():
-    # Shifting text with symbols and numbers by 7
+    #"python 3.10 is great, right?!" -> "wfaovu 3.10 pz nylha, ypnoa?!"
     original_text = "python 3.10 is great, right?!"
     encrypted = cesar.cifrar(7, original_text)
     
-    # Only letters should shift
     expected = "wfaovu 3.10 pz nylha, ypnoa?!"
     assert encrypted == expected, f"Expected '{expected}', but got '{encrypted}'"
     
@@ -41,7 +40,7 @@ def test_punctuation_and_numbers():
     print("Test 4 Passed: Non-Alphabet Characters")
 
 def test_large_key():
-    # Shifting by 27 is mathematically the same as shifting by 1 (27 % 26 = 1)
+    #"hello" -> "ifmmp" saltando por 27
     encrypted = cesar.cifrar(27, "hello")
     assert encrypted == "ifmmp", f"Expected 'ifmmp', but got '{encrypted}'"
     
